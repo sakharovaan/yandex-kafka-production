@@ -41,7 +41,9 @@ async def shutdown_producer(kafka_producer: AIOKafkaProducer):
 async def lifespan(app: FastAPI):
     """Добавление kafka producer в объект FastApi, чтобы не запускать producer при каждом запросе"""
     app.kafka_producer = await start_producer()
-    app.schema_client = SchemaRegistryClient(dict(url=config.SCHEMA_REGISTRY_SERVER))
+    app.schema_client = SchemaRegistryClient({
+        'url': config.SCHEMA_REGISTRY_SERVER, 
+        'ssl.ca.location': '/ca.crt'})
     app.include_router(kafka_routers.all_routers)
     yield
     await shutdown_producer(app.kafka_producer)

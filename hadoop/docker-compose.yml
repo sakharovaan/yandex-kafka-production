@@ -99,7 +99,3 @@ services:
      - ./datanode_entrypoint.sh:/datanode_entrypoint.sh
    entrypoint: ["/bin/bash", "/datanode_entrypoint.sh"]
    command: ["hdfs", "datanode"]
-
-
-networks:
- confluent:

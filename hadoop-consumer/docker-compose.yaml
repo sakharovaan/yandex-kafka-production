@@ -23,5 +23,5 @@ services:
 
 networks:
  proxynet:
-   name: custom_network
-
+   name: hadoop_default
+   external: true

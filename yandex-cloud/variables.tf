@@ -21,3 +21,9 @@ variable "yandex_cloud_token" {
     default = ""
     description = "Yandex Cloud Token"
 }
+
+variable "kafka_password" {
+    type = string
+    default = ""
+    description = "Kafka Password"
+}

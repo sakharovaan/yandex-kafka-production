@@ -42,3 +42,14 @@ resource "yandex_mdb_kafka_topic" "kafka-topic" {
     retention_ms          = 86400000
   }
 }
+
+resource "yandex_mdb_kafka_user" "kafka-user" {
+  cluster_id = "${yandex_mdb_kafka_cluster.kafka-cluster.id}"
+  name       = "kafka-user"
+  password   = "${var.kafka_password}"
+
+  permission {
+    topic_name  = "*"
+    role        = "ACCESS_ROLE_ADMIN"
+  }
+}

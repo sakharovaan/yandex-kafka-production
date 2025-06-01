@@ -12,3 +12,8 @@ variable "kafka_subnet_id" {
   type        = list(string)
   description = "Network interface subnet ID"
 } 
+
+variable "kafka_password" {
+  type        = string
+  description = "Kafka user password"
+} 

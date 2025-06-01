@@ -29,7 +29,7 @@ variable "resources_cores" {
 }
 
 variable "resources_memory" {
-  default     = 2
+  default     = 16
   type        = number
   description = "Amount of VM memory in GB"
 } 

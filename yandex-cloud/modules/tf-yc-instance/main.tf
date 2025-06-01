@@ -2,6 +2,7 @@ resource "yandex_compute_instance" "vm-1" {
     name        = var.name
     platform_id = var.platform_id
     zone        = var.zone
+    allow_stopping_for_update = true
 
 
     scheduling_policy {

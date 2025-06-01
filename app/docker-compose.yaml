@@ -6,6 +6,7 @@ services:
    image: bitnami/kafka:3.9
    volumes:
      - ./admin-config.conf:/admin-config.conf:ro
+     - ./ca.crt:/ca.crt:ro
 
  producer:
     build: 

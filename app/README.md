@@ -54,3 +54,71 @@ consumer-1     | 2025-06-01 17:37:21.020 | INFO     | src.consumer.service:proce
 ```
 [{"id":1,"schema":"{\"fields\":[{\"name\":\"text\",\"type\":\"string\"}],\"name\":\"Message\",\"namespace\":\"Message\",\"type\":\"record\"}","schemaType":"AVRO","subject":"kafka-topic-message","version":1}]
 ```
+
+* Выполним по заданию команду `kafka-topics.sh --describe`. Сначала поменяем файл admin-config.conf, добавив туда креды пользователя, а затем выполним
+
+```bash
+docker compose run -u0 kafka-tools bash
+keytool -import -alias yc -keystore "/opt/bitnami/java/lib/security/cacerts" -file /ca.crt
+kafka-topics.sh --describe --bootstrap-server rc1a-96eh53qo92ss79ic.mdb.yandexcloud.net:9091 --command-config /admin-config.conf
+```
+
+Полный вывод команды:
+```
+
+Topic: kafka-topic      TopicId: YbZTH3a5QriRZNQmM6qd-A PartitionCount: 3       ReplicationFactor: 3    Configs: min.insync.replicas=2,cleanup.policy=delete,segment.bytes=1073741824,retention.ms=86400000,retention.bytes=1073741824
+        Topic: kafka-topic      Partition: 0    Leader: 1       Replicas: 1,2,3 Isr: 1,2,3      Elr: N/A        LastKnownElr: N/A
+        Topic: kafka-topic      Partition: 1    Leader: 2       Replicas: 2,3,1 Isr: 2,3,1      Elr: N/A        LastKnownElr: N/A
+        Topic: kafka-topic      Partition: 2    Leader: 3       Replicas: 3,1,2 Isr: 3,1,2      Elr: N/A        LastKnownElr: N/A
+Topic: __consumer_offsets       TopicId: VZ69wROGT7CTALTt6ZM6rQ PartitionCount: 50      ReplicationFactor: 3    Configs: compression.type=producer,min.insync.replicas=1,cleanup.policy=compact,segment.bytes=104857600
+        Topic: __consumer_offsets       Partition: 0    Leader: 2       Replicas: 2,3,1 Isr: 2,3,1      Elr: N/A        LastKnownElr: N/A
+        Topic: __consumer_offsets       Partition: 1    Leader: 3       Replicas: 3,1,2 Isr: 3,1,2      Elr: N/A        LastKnownElr: N/A
+        Topic: __consumer_offsets       Partition: 2    Leader: 1       Replicas: 1,2,3 Isr: 1,2,3      Elr: N/A        LastKnownElr: N/A
+        Topic: __consumer_offsets       Partition: 3    Leader: 2       Replicas: 2,1,3 Isr: 2,1,3      Elr: N/A        LastKnownElr: N/A
+        Topic: __consumer_offsets       Partition: 4    Leader: 1       Replicas: 1,3,2 Isr: 1,3,2      Elr: N/A        LastKnownElr: N/A
+        Topic: __consumer_offsets       Partition: 5    Leader: 3       Replicas: 3,2,1 Isr: 3,2,1      Elr: N/A        LastKnownElr: N/A
+        Topic: __consumer_offsets       Partition: 6    Leader: 1       Replicas: 1,3,2 Isr: 1,3,2      Elr: N/A        LastKnownElr: N/A
+        Topic: __consumer_offsets       Partition: 7    Leader: 3       Replicas: 3,2,1 Isr: 3,2,1      Elr: N/A        LastKnownElr: N/A
+        Topic: __consumer_offsets       Partition: 8    Leader: 2       Replicas: 2,1,3 Isr: 2,1,3      Elr: N/A        LastKnownElr: N/A
+        Topic: __consumer_offsets       Partition: 9    Leader: 3       Replicas: 3,1,2 Isr: 3,1,2      Elr: N/A        LastKnownElr: N/A
+        Topic: __consumer_offsets       Partition: 10   Leader: 1       Replicas: 1,2,3 Isr: 1,2,3      Elr: N/A        LastKnownElr: N/A
+        Topic: __consumer_offsets       Partition: 11   Leader: 2       Replicas: 2,3,1 Isr: 2,3,1      Elr: N/A        LastKnownElr: N/A
+        Topic: __consumer_offsets       Partition: 12   Leader: 1       Replicas: 1,3,2 Isr: 1,3,2      Elr: N/A        LastKnownElr: N/A
+        Topic: __consumer_offsets       Partition: 13   Leader: 3       Replicas: 3,2,1 Isr: 3,2,1      Elr: N/A        LastKnownElr: N/A
+        Topic: __consumer_offsets       Partition: 14   Leader: 2       Replicas: 2,1,3 Isr: 2,1,3      Elr: N/A        LastKnownElr: N/A
+        Topic: __consumer_offsets       Partition: 15   Leader: 3       Replicas: 3,1,2 Isr: 3,1,2      Elr: N/A        LastKnownElr: N/A
+        Topic: __consumer_offsets       Partition: 16   Leader: 1       Replicas: 1,2,3 Isr: 1,2,3      Elr: N/A        LastKnownElr: N/A
+        Topic: __consumer_offsets       Partition: 17   Leader: 2       Replicas: 2,3,1 Isr: 2,3,1      Elr: N/A        LastKnownElr: N/A
+        Topic: __consumer_offsets       Partition: 18   Leader: 3       Replicas: 3,2,1 Isr: 3,2,1      Elr: N/A        LastKnownElr: N/A
+        Topic: __consumer_offsets       Partition: 19   Leader: 2       Replicas: 2,1,3 Isr: 2,1,3      Elr: N/A        LastKnownElr: N/A
+        Topic: __consumer_offsets       Partition: 20   Leader: 1       Replicas: 1,3,2 Isr: 1,3,2      Elr: N/A        LastKnownElr: N/A
+        Topic: __consumer_offsets       Partition: 21   Leader: 2       Replicas: 2,1,3 Isr: 2,1,3      Elr: N/A        LastKnownElr: N/A
+        Topic: __consumer_offsets       Partition: 22   Leader: 1       Replicas: 1,3,2 Isr: 1,3,2      Elr: N/A        LastKnownElr: N/A
+        Topic: __consumer_offsets       Partition: 23   Leader: 3       Replicas: 3,2,1 Isr: 3,2,1      Elr: N/A        LastKnownElr: N/A
+        Topic: __consumer_offsets       Partition: 24   Leader: 2       Replicas: 2,3,1 Isr: 2,3,1      Elr: N/A        LastKnownElr: N/A
+        Topic: __consumer_offsets       Partition: 25   Leader: 3       Replicas: 3,1,2 Isr: 3,1,2      Elr: N/A        LastKnownElr: N/A
+        Topic: __consumer_offsets       Partition: 26   Leader: 1       Replicas: 1,2,3 Isr: 1,2,3      Elr: N/A        LastKnownElr: N/A
+        Topic: __consumer_offsets       Partition: 27   Leader: 2       Replicas: 2,1,3 Isr: 2,1,3      Elr: N/A        LastKnownElr: N/A
+        Topic: __consumer_offsets       Partition: 28   Leader: 1       Replicas: 1,3,2 Isr: 1,3,2      Elr: N/A        LastKnownElr: N/A
+        Topic: __consumer_offsets       Partition: 29   Leader: 3       Replicas: 3,2,1 Isr: 3,2,1      Elr: N/A        LastKnownElr: N/A
+        Topic: __consumer_offsets       Partition: 30   Leader: 3       Replicas: 3,1,2 Isr: 3,1,2      Elr: N/A        LastKnownElr: N/A
+        Topic: __consumer_offsets       Partition: 31   Leader: 1       Replicas: 1,2,3 Isr: 1,2,3      Elr: N/A        LastKnownElr: N/A
+        Topic: __consumer_offsets       Partition: 32   Leader: 2       Replicas: 2,3,1 Isr: 2,3,1      Elr: N/A        LastKnownElr: N/A
+        Topic: __consumer_offsets       Partition: 33   Leader: 3       Replicas: 3,2,1 Isr: 3,2,1      Elr: N/A        LastKnownElr: N/A
+        Topic: __consumer_offsets       Partition: 34   Leader: 2       Replicas: 2,1,3 Isr: 2,1,3      Elr: N/A        LastKnownElr: N/A
+        Topic: __consumer_offsets       Partition: 35   Leader: 1       Replicas: 1,3,2 Isr: 1,3,2      Elr: N/A        LastKnownElr: N/A
+        Topic: __consumer_offsets       Partition: 36   Leader: 3       Replicas: 3,2,1 Isr: 3,2,1      Elr: N/A        LastKnownElr: N/A
+        Topic: __consumer_offsets       Partition: 37   Leader: 2       Replicas: 2,1,3 Isr: 2,1,3      Elr: N/A        LastKnownElr: N/A
+        Topic: __consumer_offsets       Partition: 38   Leader: 1       Replicas: 1,3,2 Isr: 1,3,2      Elr: N/A        LastKnownElr: N/A
+        Topic: __consumer_offsets       Partition: 39   Leader: 2       Replicas: 2,3,1 Isr: 2,3,1      Elr: N/A        LastKnownElr: N/A
+        Topic: __consumer_offsets       Partition: 40   Leader: 3       Replicas: 3,1,2 Isr: 3,1,2      Elr: N/A        LastKnownElr: N/A
+        Topic: __consumer_offsets       Partition: 41   Leader: 1       Replicas: 1,2,3 Isr: 1,2,3      Elr: N/A        LastKnownElr: N/A
+        Topic: __consumer_offsets       Partition: 42   Leader: 2       Replicas: 2,1,3 Isr: 2,1,3      Elr: N/A        LastKnownElr: N/A
+        Topic: __consumer_offsets       Partition: 43   Leader: 1       Replicas: 1,3,2 Isr: 1,3,2      Elr: N/A        LastKnownElr: N/A
+        Topic: __consumer_offsets       Partition: 44   Leader: 3       Replicas: 3,2,1 Isr: 3,2,1      Elr: N/A        LastKnownElr: N/A
+        Topic: __consumer_offsets       Partition: 45   Leader: 3       Replicas: 3,1,2 Isr: 3,1,2      Elr: N/A        LastKnownElr: N/A
+        Topic: __consumer_offsets       Partition: 46   Leader: 1       Replicas: 1,2,3 Isr: 1,2,3      Elr: N/A        LastKnownElr: N/A
+        Topic: __consumer_offsets       Partition: 47   Leader: 2       Replicas: 2,3,1 Isr: 2,3,1      Elr: N/A        LastKnownElr: N/A
+        Topic: __consumer_offsets       Partition: 48   Leader: 2       Replicas: 2,3,1 Isr: 2,3,1      Elr: N/A        LastKnownElr: N/A
+        Topic: __consumer_offsets       Partition: 49   Leader: 3       Replicas: 3,1,2 Isr: 3,1,2      Elr: N/A        LastKnownElr: N/A
+```

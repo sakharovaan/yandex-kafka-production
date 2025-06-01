@@ -14,7 +14,7 @@ services:
    shm_size: 10G
    ports:
      - "9870:9870"  # HTTP-порт для Web UI HDFS NameNode
-     - "9000:9000"  # RPC порт для запросов к NameNode
+     - "9001:9001"  # RPC порт для запросов к NameNode
    volumes:
      - ./config/core-site.xml:/opt/hadoop/etc/hadoop/core-site.xml
      - ./config/hdfs-site-namenode.xml:/opt/hadoop/etc/hadoop/hdfs-site.xml
